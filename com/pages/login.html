@@ -1,0 +1,58 @@
+{% extends "com/master_page.html" %}
+{% load static %}
+{% block main_body_block %}
+<div class="col-md-6 offset-md-3 position-relative" style="min-height: 49em; top: 100px;">
+    <div class="card">
+        <div class="card-header">
+            <i class="fa fa-user">ログイン</i>
+        </div>
+        <form class="text-center" action="{% url 'com:login' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group form-inline justify-content-center pt-5">
+                <label class="padding-0" for="login_form_user_id">
+                    ユーザーID <span class="required-tag"></span>
+                </label>
+                <div class="input-group col-md-6 padding-0">
+                    <input class="form-control" type="text" name="user_id" id="login_form_user_id" placeholder="ユーザーID"
+                        required>
+                </div>
+            </div>
+            <div class="form-group form-inline justify-content-center pb-5">
+                <label class="padding-0" for="login_form_user_password">
+                    パスワード <span class="required-tag"></span>
+                </label>
+                <div class="input-group col-md-6 padding-0">
+                    <input class="form-control" type="password" name="user_password" id="login_form_user_password"
+                        placeholder="パスワード" required>
+                    <span class="input-group-append">
+                        <label for="login_form_user_password" class="input-group-text fa fa-key"></label>
+                    </span>
+                </div>
+            </div>
+            <hr class="mx-4">
+            <button type="submit" class="btn btn-primary mb-4">ログイン</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+    axios.defaults.baseURL = 'http://127.0.0.1:8000';
+    //axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
+    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    var login_url = `${axios.defaults.baseURL}/users`;
+    var user = {
+        "email": "duy@template.com",
+        "password": "12345678"
+    };
+    axios.post(login_url, {}, {
+        user: user
+    }).then(function (response) {
+        console.log('Authenticated', response);
+        alert(response);
+    }).catch(function (error) {
+        console.log('Error on Authentication');
+        alert(error);
+    });
+</script>

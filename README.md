@@ -42,5 +42,8 @@ python manage.py runserver
 - Aggregate relations
 
 ### References
-https://docs.djangoproject.com/en/3.0/
-https://thinkster.io/tutorials/django-json-api/
+- https://docs.djangoproject.com/en/3.0/
+- https://www.django-rest-framework.org/tutorial/
+- https://thinkster.io/tutorials/django-json-api/
+- https://django-rest-swagger.readthedocs.io/en/latest/
+- https://github.com/axios/axios
