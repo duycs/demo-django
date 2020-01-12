@@ -1,18 +1,46 @@
-# demo
+# Demo Django
+- Django 3
+- RestAPI
+- Authentication with JWT
+- MySQL
 
-## Installation
+### Installation
+- Install Python 3.6.x
+- Install Django 3
+```
+python -m pip install Django
+```
+- Install Mysql
+- Create/update *DATABASES* variables at *apps/settings.py* file to correct your local Mysql
 
-1. Clone this repository: `git clone git@github.com:brwr/demo-django.git`.
-2. `cd` into `demo-django`: `cd demo-django`.
-3. Install [pyenv](https://github.com/yyuu/pyenv#installation).
-4. Install [pyenv-virtualenv](https://github.com/yyuu/pyenv-virtualenv#installation).
-5. Install Python 3.5.1: `pyenv install 3.5.1`.
-6. Create a new virtualenv called "demo": `pyenv virtualenv 3.5.1 demo`.
-7. Set the local virtualenv to "demo": `pyenv local demo`.
-8. Reload the `pyenv` environment: `pyenv rehash`.
+### Stpes
+1. Clone this repository.
+2. Open terminal.
+3. Go to root folder `demo-django`.
+4. Install some libs.
+- Install libs at requirements file.
+```
+pip install -r requirements.txt
+```
+- Install Django rest swagger.
+```
+ pip install django-rest-swagger
+```
+6. Migrate.
+```
+python manage.py migrate
+```
+7. Run at local.
+```
+python manage.py runserver
+```
 
-If all went well then your command line prompt should now start with `(demo)`.
+### TODO:
+- Refresh-token
+- Authorzation
+- Modeling
+- Aggregate relations
 
-If your command line prompt does not start with `(demo)` at this point, try running `pyenv activate demo` or `cd ../demo-django`. 
-
-If pyenv is still not working, visit us in the Thinkster Slack channel so we can help you out.
+### References
+https://docs.djangoproject.com/en/3.0/
+https://thinkster.io/tutorials/django-json-api/
