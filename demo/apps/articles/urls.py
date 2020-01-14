@@ -10,7 +10,7 @@ from .views import (
 router = DefaultRouter(trailing_slash=False)
 router.register(r'articles', ArticleViewSet)
 
-app_name = 'api'
+app_name = 'articles'
 
 urlpatterns = [
     url(r'^articles/feed/?$', ArticlesFeedAPIView.as_view()),
