@@ -38,7 +38,7 @@ python manage.py runserver
 ### Create new app
 1. Create folder where create app
 ```
-mkdir /demo/apps/app-names
+mkdir ./demo/apps/app-names
 ```
 2. Generate app-names
 ```

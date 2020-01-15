@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'demo.apps.core',
     'demo.apps.profiles',
     'demo.apps.patients',
+    'demo.apps.receiptions'
 ]
 
 #MIDDLEWARE_CLASSES = [
