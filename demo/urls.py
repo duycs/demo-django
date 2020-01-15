@@ -28,4 +28,5 @@ urlpatterns = [
     url(r'^api/', include('demo.apps.articles.urls', namespace='articles')),
     url(r'^api/', include('demo.apps.authentication.urls', namespace='authentication')),
     url(r'^api/', include('demo.apps.profiles.urls', namespace='profiles')),
+    url(r'^api/', include('demo.apps.patients.urls', namespace='patients')),
 ]

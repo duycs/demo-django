@@ -35,6 +35,23 @@ python manage.py migrate
 python manage.py runserver
 ```
 
+### Create new app
+1. Create folder where create app
+```
+mkdir /demo/apps/app-names
+```
+2. Generate app-names
+```
+django-admin.py startapp app-name ./demo/apps/app-names
+```
+3. Add config app to settings
+```
+INSTALLED_APPS = [
+....
+    'demo.apps.app-names',
+]
+```
+
 ### TODO:
 - Refresh-token
 - Authorzation

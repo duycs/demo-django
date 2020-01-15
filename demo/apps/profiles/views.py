@@ -32,7 +32,8 @@ class ProfileRetrieveAPIView(RetrieveAPIView):
 
 
 class ProfileFollowAPIView(APIView):
-    permission_classes = (IsAuthenticated,)
+    #permission_classes = (IsAuthenticated,)
+    permission_classes = (AllowAny,)
     renderer_classes = (ProfileJSONRenderer,)
     serializer_class = ProfileSerializer
 

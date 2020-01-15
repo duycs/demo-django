@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'demo.apps.authentication',
     'demo.apps.core',
     'demo.apps.profiles',
+    'demo.apps.patients',
 ]
 
 #MIDDLEWARE_CLASSES = [
@@ -142,6 +143,7 @@ STATIC_URL = '/static/'
 AUTH_USER_MODEL = 'authentication.User'
 
 REST_FRAMEWORK = {
+    'DEFAULT_SCHEMA_CLASS': 'rest_framework.schemas.coreapi.AutoSchema', 
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'demo.apps.authentication.backends.JWTAuthentication',
     ),
@@ -149,4 +151,28 @@ REST_FRAMEWORK = {
     'EXCEPTION_HANDLER': 'demo.apps.core.exceptions.core_exception_handler',
     'NON_FIELD_ERRORS_KEY': 'error',
     'PAGE_SIZE': 20,
+}
+
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'SHOW_REQUEST_HEADERS' : True,
+    'USE_SESSION_AUTH': False,
+    'SECURITY_DEFINITIONS': {
+        'oauth2': {
+            'type': 'apiKey',
+            'description': 'Personal API Key authorization',
+            'name': 'Authorization',
+            'in': 'header',
+        }
+    },
+    'APIS_SORTER': 'alpha',
+    # "JSON_EDITOR": True,
+    "SHOW_REQUEST_HEADERS": True,
+    "VALIDATOR_URL": False,
+    "api_key": 'token eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpZCI6MSwiZXhwIjoxNTg0MjI0NjgwfQ.DI8CKBDqG-9Wxeja7o8oz2Oi81sgZe75ow_RlDQuAxY', # An API key
 }
