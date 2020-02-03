@@ -19,7 +19,7 @@ class ArticleViewSet(mixins.CreateModelMixin,
     lookup_field = 'slug'
     queryset = Article.objects.select_related('author', 'author__user')
     #permission_classes = (IsAuthenticatedOrReadOnly,)
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     renderer_classes = (ArticleJSONRenderer,)
     serializer_class = ArticleSerializer
 
@@ -105,7 +105,7 @@ class ArticleViewSet(mixins.CreateModelMixin,
 
 
 class ArticlesFavoriteAPIView(APIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     renderer_classes = (ArticleJSONRenderer,)
     serializer_class = ArticleSerializer
 
@@ -143,7 +143,7 @@ class ArticlesFavoriteAPIView(APIView):
 
 
 class ArticlesFeedAPIView(generics.ListAPIView):
-    permission_classes = (IsAuthenticated,)
+    # permission_classes = (IsAuthenticated,)
     queryset = Article.objects.all()
     renderer_classes = (ArticleJSONRenderer,)
     serializer_class = ArticleSerializer
@@ -168,7 +168,7 @@ class ArticlesFeedAPIView(generics.ListAPIView):
 class CommentsListCreateAPIView(generics.ListCreateAPIView):
     lookup_field = 'article__slug'
     lookup_url_kwarg = 'article_slug'
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Comment.objects.select_related(
         'article', 'article__author', 'article__author__user',
         'author', 'author__user'
@@ -202,7 +202,7 @@ class CommentsListCreateAPIView(generics.ListCreateAPIView):
 
 class CommentsDestroyAPIView(generics.DestroyAPIView):
     lookup_url_kwarg = 'comment_pk'
-    permission_classes = (IsAuthenticatedOrReadOnly,)
+    # permission_classes = (IsAuthenticatedOrReadOnly,)
     queryset = Comment.objects.all()
 
     def destroy(self, request, article_slug=None, comment_pk=None):
