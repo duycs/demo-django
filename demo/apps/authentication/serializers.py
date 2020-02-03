@@ -36,7 +36,7 @@ class UserSerializer(serializers.ModelSerializer):
         # password field, we needed to specify the `min_length` and 
         # `max_length` properties too, but that isn't the case for the token
         # field.
-        read_only_fields = ('token',)
+        read_only_fields = ('token')
 
 
     def update(self, instance, validated_data):
@@ -153,14 +153,16 @@ class RegistrationSerializer(serializers.ModelSerializer):
 
     # The client should not be able to send a token along with a registration
     # request. Making `token` read-only handles that for us.
-    token = serializers.CharField(max_length=255, read_only=True)
+    #token = serializers.CharField(max_length=255, read_only=True)
+    access = serializers.CharField(max_length=255, read_only=True)
+    refresh = serializers.CharField(max_length=255, read_only=True)
 
     class Meta:
         model = User
         
         # List all of the fields that could possibly be included in a request
         # or response, including fields specified explicitly above.
-        fields = ['email', 'username', 'password', 'token']
+        fields = ['id', 'email', 'username', 'password', 'access', 'refresh']
 
     def create(self, validated_data):
         # Use the `create_user` method we wrote earlier to create a new user.

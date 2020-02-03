@@ -99,7 +99,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'clinic4',
+        'NAME': 'clinic3',
         'USER': 'root',
         'PASSWORD': 'abc@1234',
         'HOST': '127.0.0.1',
