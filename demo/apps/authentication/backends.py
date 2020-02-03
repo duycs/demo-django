@@ -8,7 +8,7 @@ from .models import User
 
 
 class JWTAuthentication(authentication.BaseAuthentication):
-    authentication_header_prefix = 'Bearer'
+    authentication_header_prefix = settings.CUSTOM_TOKEN['AUTH_HEADER_TYPES']
 
     def authenticate(self, request):
         """
@@ -76,13 +76,13 @@ class JWTAuthentication(authentication.BaseAuthentication):
         """
         
         try:
-            payload = jwt.decode(token, settings.SECRET_KEY)
+            payload = jwt.decode(token, settings.CUSTOM_TOKEN['SECRET_KEY'])
         except:
             msg = 'Invalid authentication. Could not decode token.'
             raise exceptions.AuthenticationFailed(msg)
 
         try:
-            user = User.objects.get(pk=payload['id'])
+            user = User.objects.get(pk=payload[settings.CUSTOM_TOKEN['USER_ID_FIELD']])
         except User.DoesNotExist:
             msg = 'No user matching this token was found.'
             raise exceptions.AuthenticationFailed(msg)

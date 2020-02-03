@@ -13,12 +13,23 @@ https://docs.djangoproject.com/en/1.9/ref/settings/
 """
 
 import os
+from datetime import timedelta
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 # TODO: Remove to env
 SECRET_KEY = '13q$v6_po-j^dxlt2b!w(!5j0mf**w8g$&%z0205o7ephoph(p'
+
+CUSTOM_TOKEN = {
+    'SIGNING_KEY': SECRET_KEY,
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
+    'ALGORITHM': 'HS256',
+    'AUTH_HEADER_TYPES': 'Bearer',
+    'USER_ID_FIELD': 'id',
+    'JTI_CLAIM': 'jti',
+}
 
 # TODO: Remove
 DEBUG = True
@@ -88,7 +99,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         #'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-        'NAME': 'clinic2',
+        'NAME': 'clinic4',
         'USER': 'root',
         'PASSWORD': 'abc@1234',
         'HOST': '127.0.0.1',

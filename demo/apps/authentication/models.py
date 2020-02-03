@@ -7,6 +7,8 @@ from django.contrib.auth.models import (
     AbstractBaseUser, BaseUserManager, PermissionsMixin
 )
 from django.db import models
+import json
+from django.http import JsonResponse
 
 from demo.apps.core.models import TimestampedModel
 
@@ -100,7 +102,7 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
         return self.email
 
     @property
-    def token(self):
+    def access(self):
         """
         Allows us to get a user's token by calling `user.token` instead of
         `user.generate_jwt_token().
@@ -109,6 +111,17 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
         a "dynamic property".
         """
         return self._generate_jwt_token()
+
+    @property
+    def refresh(self):
+        """
+        Allows us to get a user's token by calling `user.refresh` instead of
+        `user._generate_refresh_jwt_token().
+
+        The `@property` decorator above makes this possible. `refresh` is called
+        a "dynamic property".
+        """
+        return self._generate_refresh_jwt_token()
 
     def get_full_name(self):
         """
@@ -131,12 +144,31 @@ class User(AbstractBaseUser, PermissionsMixin, TimestampedModel):
         Generates a JSON Web Token that stores this user's ID and has an expiry
         date set to 60 days into the future.
         """
-        dt = datetime.now() + timedelta(days=60)
+        dt = datetime.now() + settings.CUSTOM_TOKEN['ACCESS_TOKEN_LIFETIME']
+
+        #TODO: setting id of user in the setting
+        #id = settings.CUSTOM_TOKEN['USER_ID_FIELD']
 
         token = jwt.encode({
             'id': self.pk,
             #'exp': int(dt.strftime('%s'))
             'exp': dt
-        }, settings.SECRET_KEY, algorithm='HS256')
+        }, settings.SECRET_KEY, algorithm=settings.CUSTOM_TOKEN['ALGORITHM'])
+
+        return token.decode('utf-8')
+    
+    def _generate_refresh_jwt_token(self):
+        """
+        Generates a JSON Web Token that stores this user's ID and has an expiry
+        date set to 60 days into the future.
+        """
+
+        dt = datetime.now() + settings.CUSTOM_TOKEN['REFRESH_TOKEN_LIFETIME']
+
+        token = jwt.encode({
+            'id': self.pk,
+            #'exp': int(dt.strftime('%s'))
+            'exp': dt
+        }, settings.SECRET_KEY, algorithm=settings.CUSTOM_TOKEN['ALGORITHM'])
 
         return token.decode('utf-8')
