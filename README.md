@@ -1,12 +1,18 @@
 # Demo Django
-- Django 3
-- RestAPI
+
+### Criteria
+This project demo a backend RESTful API use Django framework
+
+### Keywords
+- Python
+- Django
+- RESTAPI
 - Authentication with JWT
 - MySQL
 
 ### Installation
 - Install Python 3.6.x
-- Install Django 3
+- Install Django 2
 ```
 python -m pip install Django
 ```
@@ -18,19 +24,14 @@ python -m pip install Django
 2. Open terminal.
 3. Go to root folder `demo-django`.
 4. Install some libs.
-- Install libs at requirements file.
 ```
 pip install -r requirements.txt
 ```
-- Install Django rest swagger.
-```
- pip install django-rest-swagger
-```
-6. Migrate.
+5. Migrate.
 ```
 python manage.py migrate
 ```
-7. Run at local.
+6. Run at local.
 ```
 python manage.py runserver
 ```
@@ -52,15 +53,25 @@ INSTALLED_APPS = [
 ]
 ```
 
-### TODO:
+### TODO
 - Refresh-token
-- Authorzation
-- Modeling
+- Logout will add token to black list
+- Modeling with domain
 - Aggregate relations
+- Serializers
+- Enpoints API for bussiness
+- Containerization
+- Authorization
+
+### Bugs
+- Swagger doc don't show if require authentication
+- Swagger exception at Django 3
+- Expired token time
 
 ### References
 - https://docs.djangoproject.com/en/3.0/
 - https://www.django-rest-framework.org/tutorial/
 - https://thinkster.io/tutorials/django-json-api/
+- https://github.com/gothinkster/conduit-django
 - https://django-rest-swagger.readthedocs.io/en/latest/
 - https://github.com/axios/axios
