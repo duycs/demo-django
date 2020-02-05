@@ -12,7 +12,7 @@ This project demo a backend RESTful API use Django framework
 
 ### Installation
 - Install Python 3.6.x
-- Install Django 2
+- Install Django 2.x
 ```
 python -m pip install Django
 ```
@@ -20,18 +20,24 @@ python -m pip install Django
 - Create/update *DATABASES* variables at *apps/settings.py* file to correct your local Mysql
 
 ### Stpes
-1. Clone this repository.
-2. Open terminal.
-3. Go to root folder `demo-django`.
-4. Install some libs.
+1. Clone this repository
+2. Open terminal
+3. Go to root folder `demo-django`
+4. Install some libs
 ```
 pip install -r requirements.txt
 ```
-5. Migrate.
+5. Migrate
+```
+python manage.py makemigrations
+```
 ```
 python manage.py migrate
 ```
-6. Run at local.
+5.1 Some exception case when migration
+- https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
+
+6. Run at local
 ```
 python manage.py runserver
 ```
@@ -75,3 +81,4 @@ INSTALLED_APPS = [
 - https://github.com/gothinkster/conduit-django
 - https://django-rest-swagger.readthedocs.io/en/latest/
 - https://github.com/axios/axios
+- https://simpleisbetterthancomplex.com/tutorial/2016/07/26/how-to-reset-migrations.html
