@@ -8,6 +8,9 @@ class TimestampedModel(models.Model):
     # A timestamp reprensenting when this object was last updated.
     updated_at = models.DateTimeField(auto_now=True)
 
+    # A delete flag
+    is_delete = models.BooleanField(default=False)
+
     class Meta:
         abstract = True
 

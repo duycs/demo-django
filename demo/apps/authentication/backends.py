@@ -23,7 +23,7 @@ class JWTAuthentication(authentication.BaseAuthentication):
                     headers.
 
         2) `(user, token)` - We return a user/token combination when 
-                             authentication was successful.
+                    authentication was successful.
 
         If neither of these two cases were met, that means there was an error.
         In the event of an error, we do not return anything. We simple raise

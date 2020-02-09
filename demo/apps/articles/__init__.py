@@ -1,12 +1,12 @@
-from django.apps import AppConfig
+# from django.apps import AppConfig
 
 
-class ArticlesAppConfig(AppConfig):
-    name = 'demo.apps.articles'
-    label = 'articles'
-    verbose_name = 'Articles'
+# class ArticlesAppConfig(AppConfig):
+#     name = 'demo.apps.articles'
+#     label = 'articles'
+#     verbose_name = 'Articles'
 
-    def ready(self):
-        import demo.apps.articles.signals
+#     def ready(self):
+#         import demo.apps.articles.signals
 
-default_app_config = 'demo.apps.articles.ArticlesAppConfig'
+# default_app_config = 'demo.apps.articles.ArticlesAppConfig'
